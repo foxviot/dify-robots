@@ -93,15 +93,40 @@ npm run build
 
 ## 📁 项目结构
 
-
-```
+```text
 src/
 ├── main.jsx              # 应用入口
 ├── App.jsx               # 主应用（布局 + 错误提示）
-├── index.css            # 全局样式（滚动条/Markdown/动画）
+├── index.css             # 全局样式
 ├── components/
-│   ├── ChatWindow.jsx    # 聊天窗口（欢迎页/消息列表/输入区）
+│   ├── ChatWindow.jsx    # 聊天窗口
+│   ├── MessageBubble.jsx # 消息气泡
+│   ├── Sidebar.jsx       # 会话列表
+│   ├── FileUpload.jsx    # 文件上传
+│   └── ThemeToggle.jsx   # 深色模式
+├── hooks/
+│   └── useDifyChat.js    # API 状态管理
+└── utils/
+    └── api.js            # API 封装
+```
+
+## 🔌 Dify API 说明
+
+本项目对接 Dify **Chat App** 类型应用，使用以下 API：
+
+| 接口 | 方法 | 说明 |
+|---|---|---|
+| `/chat-messages` | POST | 发送消息，支持流式返回 |
+| `/messages` | GET | 获取会话消息历史 |
+| `/conversations` | GET | 获取会话列表 |
+| `/files/upload` | POST | 上传文件 |
+
+请求头需携带 `Authorization: Bearer <API_KEY>`。
 
 ## Deployment note
 
 Vite exposes `VITE_*` values in the browser bundle. Keep production Dify credentials behind a server-side proxy; this frontend configuration is for local development and controlled demos.
+
+## 📄 License
+
+See [LICENSE](LICENSE) for the repository license terms.
